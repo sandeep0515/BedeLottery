@@ -7,6 +7,7 @@ using BedeLottery.Services;
 using BedeLottery.Services.Interfaces;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System.Text.Json;
 
 static LotterySettings LoadSettings()
@@ -36,6 +37,7 @@ static ServiceProvider ConfigureServices(LotterySettings settings)
     services.AddSingleton<IValidator<RunGameRequest>, RunGameRequestValidator>();
     services.AddTransient<IPlayerService, PlayerService>();
     services.AddTransient<ILotteryGameEngineService, LotteryGameEngineService>();
+    services.AddLogging(builder => builder.AddConsole().SetMinimumLevel(LogLevel.Warning));
     return services.BuildServiceProvider();
 }
 
