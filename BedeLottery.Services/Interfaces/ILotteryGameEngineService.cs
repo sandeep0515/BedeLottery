@@ -5,7 +5,7 @@ namespace BedeLottery.Services.Interfaces;
 
 public interface ILotteryGameEngineService
 {
-    LotteryGameResult RunGame(int gameId, int numberOfTicketsPurchased);
-
+    LotteryGameResult RunGame(Game game, List<Player> players);
+    List<Ticket> GenerateTickets(Game game, List<Player> players);
     Game CreateGame(int gameId);
 }
